@@ -38,7 +38,7 @@ class CashCalculator(Calculator):
     def __init__(self, limit):
         super().__init__(limit)
 
-    
+    # Считаем, сколько осталось денег до конца лимита
     def get_today_cash_remained(self, currency):
         cash_remained = 0
         currencies = {
@@ -57,6 +57,7 @@ class CashCalculator(Calculator):
             elif cash_remained < 0:
                return print(f'Денег нет, держись: твой долг {cash_remained} {currencies[currency][0]}')
 
+    # Считаем сколько потрачено за неделю
     def get_week_stats(self, currency):
         today = dt.datetime.now().date()
         week_ago = today - dt.timedelta(7)
@@ -83,6 +84,7 @@ class CaloriesCalculator(Calculator):
     def __init__(self, limit):
         super().__init__(limit)
 
+    # Считаем, сколько осталось съесть калорий до конца лимита
     def get_today_cash_remained(self):
         cash_remained = 0
         cash_remained = (self.limit - self.get_today_stats())
@@ -91,6 +93,7 @@ class CaloriesCalculator(Calculator):
         elif cash_remained <= 0:
             return print(f'Хватит есть!')
 
+    # Считаем сколько получено кКал за неделю
     def get_week_stats(self):
         today = dt.datetime.now().date()
         week_ago = today - dt.timedelta(7)
